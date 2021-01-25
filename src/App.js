@@ -53,7 +53,6 @@ const App = function () {
         </table>
       </div>
 
-
     </div >
   );
 };
