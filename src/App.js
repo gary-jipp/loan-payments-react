@@ -1,17 +1,22 @@
 import { useState } from 'react';
+import axios from 'axios';
 import './App.css';
-
-const testData = [
-  { id: 1, date: "2020-12-21", loan: "10,000", balance: "10000" },
-  { id: 2, date: "2021-01-09", interest: "900", paid: "6,500", balance: "4,400" },
-  { id: 3, date: "2021-01-22", interest: "286", loan: "5,000", balance: "9,686" },
-  { id: 4, date: "Today", interest: "97", balance: "9,783" },
-  { id: 5, date: "2021-02-22", interest: "1,404", balance: "11,090" },
-];
 
 const App = function () {
 
-  const [data, setData] = useState(testData);
+  const [data, setData] = useState([]);
+  const [uid, setUid] = useState();
+
+  const onChange = function (event) {
+    setUid(event.target.value);
+  };
+
+  const onClick = function (event) {
+    event.preventDefault();
+    const url = `/api/payments/${uid}`;
+    axios.get(url).then(res => setData(res.data))
+      .catch(e => console.log(e.ernno));
+  };
 
   const itemList = data.map(item =>
     <tr key={item.id}>
@@ -27,9 +32,9 @@ const App = function () {
     <div className="App">
 
       <div className="container">
-        <form>
+        <form onSubmit={onClick}>
           <div className="input-field">
-            <input type="text" id="account-id" required />
+            <input type="text" id="account-id" required value={uid} onChange={onChange} />
             <label className="account-id">Account ID</label>
           </div>
           <button className="btn blue darken-2 z-depth-0">Enter</button>
