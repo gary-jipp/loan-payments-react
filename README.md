@@ -1,1 +1,1 @@
-## Clean React App
+## Loan Payments - Demo App
