@@ -49,7 +49,7 @@ const App = function () {
       {data.length > 0 &&
         <>
           <div className="container row valign-wrapper">
-            <span className="flow-text">Name: {data[0].name}</span>
+            <span className="flow-text">Account Name: {data[0].name}</span>
             <span className="col s5"></span>
             <button onClick={reset} className="btn blue darken-2 z-depth-0 right">Exit</button>
           </div>
