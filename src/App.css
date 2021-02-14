@@ -23,3 +23,6 @@ table th:nth-child(1),
 td:nth-child(1) {
   text-align: left;
 }
+
+/* span { padding: 0px; border:1px solid #42a5f5; } */
+/* div { border:1px solid red; } */
